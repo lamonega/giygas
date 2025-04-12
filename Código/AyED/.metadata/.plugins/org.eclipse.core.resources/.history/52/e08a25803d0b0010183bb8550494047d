@@ -1,0 +1,27 @@
+package tp1.ej8;
+
+import java.util.*;
+
+public class Cola <T>{
+	List<T> data;
+	
+	public Cola() {
+		this.data = new LinkedList<T>();
+	}
+	
+	public void encolar(T dato) {
+		data.add(dato);
+	}
+	
+	public T descolar() {
+		return data.remove(0);
+	}
+	
+	public T tope() {
+		return data.get(0);
+	}
+	
+	public int tamaño() {
+		return data.size();
+	}
+}

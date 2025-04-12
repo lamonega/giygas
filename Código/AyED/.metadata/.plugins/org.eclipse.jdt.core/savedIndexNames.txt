@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+/home/laureano/Giygas/Código/AyED/.metadata/.plugins/org.eclipse.jdt.core
+25435526.index
+486224395.index
+1865797976.index

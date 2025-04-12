@@ -1,0 +1,36 @@
+package tp1.ej9;
+
+import java.util.Stack;
+
+public class Balanceo {
+	public static void main(String[] args) {
+        String input = args[0];
+        System.out.println("¿Está balanceado? " + estaBalanceado(input));
+    }
+
+    private static boolean estaBalanceado(String s) {
+        Stack<Character> pila = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '[' || c == '{') {  // Si es apertura, apilar
+                pila.push(c);
+            } else {
+                if (pila.isEmpty()) {  // Si hay cierre y la pila está vacía → desbalanceado
+                    return false;
+                }
+                
+                // Verificar correspondencia entre cierre y apertura
+                char ultimo = pila.pop();
+                if (c == ')' && ultimo != '(') {
+                    return false;
+                } else if (c == ']' && ultimo != '[') {
+                    return false;
+                } else if (c == '}' && ultimo != '{') {
+                    return false;
+                }
+            }
+        }
+        
+        return pila.isEmpty();  // La pila debe quedar vacía al final
+    }
+}

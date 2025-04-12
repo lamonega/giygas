@@ -1,0 +1,192 @@
+{
+  "main": {
+    "id": "1625a01dfd6ad8cd",
+    "type": "split",
+    "children": [
+      {
+        "id": "ee8aeff5694a9d25",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5750af8a64a67ff2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apuntes/AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "3.2 Árboles de expresión"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "410759aa9910170f",
+    "type": "split",
+    "children": [
+      {
+        "id": "6549537586141f05",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3213c0134e73eb09",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "b79296fa8cd2f2cb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "d88ce3feff3ca364",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "47d55ddc3bfa54b4",
+    "type": "split",
+    "children": [
+      {
+        "id": "21da85614065bfd4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "83ac1c68f095a343",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Welcome.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Welcome"
+            }
+          },
+          {
+            "id": "9d338129ee29cd9c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Welcome"
+            }
+          },
+          {
+            "id": "30e74636209cd79c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "303680985a703a82",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Welcome"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "5750af8a64a67ff2",
+  "lastOpenFiles": [
+    "Apuntes/AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
+    "Apuntes/AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
+    "Apuntes/FOD/clase 2.md",
+    "Apuntes/FOD/Clase 1.md",
+    "Apuntes/Rust/Clase 1.md",
+    "Apuntes/AyED/Teoría/Clase 2/2.2 Datos abstractos y cómo implementarlos.md",
+    "Apuntes/AyED/Teoría/Clase 2/2.1 Herencia y abstracción.md",
+    "Código/FOD/TP1/ej2.pas",
+    "Código/FOD/TP1/ej1.pas",
+    "Código/FOD/TP1",
+    "Código/FOD",
+    "Apuntes/AyED/Teoría/Clase 3",
+    "Apuntes/Rust",
+    "Apuntes/FOD/Clase 1",
+    "Apuntes/FOD",
+    "Apuntes/AyED/Teoría/Clase 2",
+    "Apuntes/AyED/Teoría/Clase 1",
+    "Welcome.md"
+  ]
+}

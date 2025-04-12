@@ -1,0 +1,12 @@
+package tp1.ej7;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class Collatz {
+	public static LinkedList<Integer> SucesionCollatz (Integer n) {
+		LinkedList<Integer> l = new LinkedList<Integer>();
+		l.add(n);
+		if (n == 1) return l;
+	}
+}
