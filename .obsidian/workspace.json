@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ee8aeff5694a9d25",
+        "id": "534e25e1c9b5359c",
         "type": "tabs",
         "children": [
           {
-            "id": "5750af8a64a67ff2",
+            "id": "01ff5a4acf833264",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -168,15 +168,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5750af8a64a67ff2",
+  "active": "01ff5a4acf833264",
   "lastOpenFiles": [
-    "Apuntes/AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
+    "PDF/AyED/Teoría/CLASE 3.2 - Arboles de Expresión.pdf",
     "Apuntes/AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
-    "Apuntes/FOD/clase 2.md",
-    "Apuntes/FOD/Clase 1.md",
-    "Apuntes/Rust/Clase 1.md",
+    "PDF/AyED/Teoría/CLASE 4 - Arboles Binarios y de Expresión en JAVA-1.pdf",
     "Apuntes/AyED/Teoría/Clase 2/2.2 Datos abstractos y cómo implementarlos.md",
     "Apuntes/AyED/Teoría/Clase 2/2.1 Herencia y abstracción.md",
+    "PDF/AyED/Teoría/CLASE 2.2 - Herencia en Colas - Pilas y Java List.pdf",
+    "Apuntes/Rust/Clase 1.md",
+    "Apuntes/AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
+    "Apuntes/FOD/clase 2.md",
+    "Apuntes/FOD/Clase 1.md",
     "Código/FOD/TP1/ej2.pas",
     "Código/FOD/TP1/ej1.pas",
     "Código/FOD/TP1",
@@ -184,9 +187,6 @@
     "Apuntes/AyED/Teoría/Clase 3",
     "Apuntes/Rust",
     "Apuntes/FOD/Clase 1",
-    "Apuntes/FOD",
-    "Apuntes/AyED/Teoría/Clase 2",
-    "Apuntes/AyED/Teoría/Clase 1",
     "Welcome.md"
   ]
 }
