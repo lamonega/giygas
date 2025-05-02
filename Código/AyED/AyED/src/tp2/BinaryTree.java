@@ -1,6 +1,8 @@
+// Ejercicio 1 y 2
+
+// Ejercicio 1
+
 package tp2;
-
-
 
 public class BinaryTree <T> {
 	
@@ -76,6 +78,8 @@ public class BinaryTree <T> {
 		return this.getData().toString();
 	}
 
+// Ejercicio 2
+
 	public  int contarHojas() {
         if (this.isLeaf()) {
             return 1;
@@ -93,8 +97,6 @@ public class BinaryTree <T> {
         return cantidad;
 	}
 		
-		
-    	 
     public BinaryTree<T> espejo() {
     if (this == null || this.getData() == null) {
         return null;
@@ -109,10 +111,54 @@ public class BinaryTree <T> {
     return nuevo;
 }
 
+    public void entreNiveles(int nivelInicial, int nivelFinal) {
+        if (nivelInicial < 0 || nivelFinal < nivelInicial) {
+            return;
+        }
 
-	// 0<=n<=m
-	public void entreNiveles(int n, int m){
-		
-   }
+        Queue<BinaryTree<T>> colaNodos = new Queue<>();
+        colaNodos.enqueue(this);
+
+        int nivelActual             = 0;
+        int nodosRestantesNivel     = 1;  // cuántos nodos quedan por procesar en el nivelActual
+        int nodosParaNivelSiguiente = 0;  // cuántos nodos se van a procesar en el nivelActual+1
+
+        // Mientras queden nodos en la cola y no hayamos superado nivelFinal
+        while (!colaNodos.isEmpty() && nivelActual <= nivelFinal) {
+            // desencolamos un nodo de este nivel
+            BinaryTree<T> arbol = colaNodos.dequeue();
+            nodosRestantesNivel--;
+
+            // solo imprimimos si estamos dentro del rango pedido
+            if (nivelActual >= nivelInicial) {
+                System.out.print(arbol.getData() + " ");
+            }
+
+            // encolamos hijos y contamos para el siguiente nivel
+            if (arbol.hasLeftChild()) {
+                colaNodos.enqueue(arbol.getLeftChild());
+                nodosParaNivelSiguiente++;
+            }
+            if (arbol.hasRightChild()) {
+                colaNodos.enqueue(arbol.getRightChild());
+                nodosParaNivelSiguiente++;
+            }
+
+            // si ya procesamos todos los nodos de este nivel…
+            if (nodosRestantesNivel == 0) {
+                // si imprimimos algo en este nivel, hacemos salto de línea
+                if (nivelActual >= nivelInicial) {
+                    System.out.println();
+                }
+                // avanzamos de nivel
+                nivelActual++;
+                // preparamos la cuenta para el siguiente nivel
+                nodosRestantesNivel     = nodosParaNivelSiguiente;
+                nodosParaNivelSiguiente = 0;
+                // al volver a la cabecera, la condición nivelActual <= nivelFinal
+                // decidirá si el bucle continúa o termina
+            }
+        }
+    }
 		
 }
