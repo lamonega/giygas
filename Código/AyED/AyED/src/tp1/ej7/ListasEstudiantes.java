@@ -34,7 +34,6 @@ public class ListasEstudiantes {
         }
     }
     
-    @SuppressWarnings("unchecked")
 	public static void main(String[] args) {
         LinkedList<Estudiante> listaEstudiantes = new LinkedList<>();
         listaEstudiantes.add(new Estudiante("Ana", "23557(3"));

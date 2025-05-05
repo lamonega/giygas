@@ -6,19 +6,17 @@ public class Ejercicio3 {
         estudiantes[0] = new Estudiante();
         estudiantes[0].setNombre("Ana");
         estudiantes[0].setApellido("Pérez");
-        //.. otros setters
 
         Profesor[] profesores = new Profesor[3];
         profesores[0] = new Profesor();
         profesores[0].setNombre("Carlos");
-        // ... otros setters
 
         for (Estudiante e : estudiantes) {
-            System.out.println(e.tusDatos()); // Breakpoint aquí
+            System.out.println(e.tusDatos());
         }
 
         for (Profesor p : profesores) {
-            System.out.println(p.tusDatos()); // Breakpoint aquí
+            System.out.println(p.tusDatos());
         }
     }
 }
