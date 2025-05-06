@@ -1,6 +1,6 @@
 package tp1.ej9;
 
-import java.util.Stack;
+import java.util.*;
 
 public class Ejercicio9 {
 

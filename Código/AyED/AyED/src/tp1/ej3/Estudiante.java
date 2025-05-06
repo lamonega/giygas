@@ -4,6 +4,10 @@ public class Estudiante extends Persona{
     private String comision;
     private String direccion;
     
+    public Estudiante() {
+        
+    }
+
     public Estudiante(String nom, String apellido, String email, String comision, String direccion) {
         super(nom, apellido, email);
         this.setComision(comision);

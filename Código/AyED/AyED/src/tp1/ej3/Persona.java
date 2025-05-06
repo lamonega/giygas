@@ -5,6 +5,10 @@ public abstract class Persona {
     private String apellido;
     private String email;
 
+    public Persona() {
+        
+    }
+
     public Persona(String nom, String apellido, String email) {
         this.setNombre(nom);
         this.setApellido(apellido);

@@ -4,6 +4,10 @@ public class Profesor extends Persona{
     private String catedra;
     private String facultad;
 
+    public Profesor() {
+        
+    }
+
     public Profesor(String nom, String apellido, String email, String catedra, String facultad) {
         super(nom, apellido, email);
         this.setCatedra(catedra);

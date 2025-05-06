@@ -2,9 +2,7 @@
 
 package tp2;
 
-import java.util.ArrayList;
-import java.util.List;
-import tp2.BinaryTree;
+import java.util.*;
 
 public class ContadorArbol {
     private BinaryTree<Integer> arbol;

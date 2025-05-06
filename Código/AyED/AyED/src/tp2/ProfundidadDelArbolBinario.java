@@ -2,10 +2,10 @@
 
 package tp2;
 
-public class ProfundidadDeArbolBinario {
+public class ProfundidadDelArbolBinario {
     private BinaryTree<Integer> arbol;
 
-    public ProfundidadDeArbolBinario(BinaryTree<Integer> unArbol) {
+    public ProfundidadDelArbolBinario(BinaryTree<Integer> unArbol) {
         this.arbol = unArbol;
     }
 
