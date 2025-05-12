@@ -9,3 +9,7 @@ fn es_primo(n: u64) -> bool {
     }
     true
 }
+
+fn main () {
+    println!(es_primo(11));
+}
