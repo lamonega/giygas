@@ -170,7 +170,16 @@
   },
   "active": "01ff5a4acf833264",
   "lastOpenFiles": [
+<<<<<<< Updated upstream
     "PDF/AyED/Teoría/CLASE 3.2 - Arboles de Expresión.pdf",
+=======
+    "Código/AyED/AyED/src/tp2/BinaryTree.java",
+    "Código/AyED/AyED/bin/tp2/BinaryTree.class",
+    "PDF/AyED/Práctica/2025_TP2_AB.pdf",
+    "Código/AyED/AyED/bin/tp2/ej1",
+    "Código/AyED/AyED/src/tp2/ej1",
+    "Apuntes/AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
+>>>>>>> Stashed changes
     "Apuntes/AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
     "PDF/AyED/Teoría/CLASE 4 - Arboles Binarios y de Expresión en JAVA-1.pdf",
     "Apuntes/AyED/Teoría/Clase 2/2.2 Datos abstractos y cómo implementarlos.md",
@@ -186,7 +195,10 @@
     "Código/FOD",
     "Apuntes/AyED/Teoría/Clase 3",
     "Apuntes/Rust",
+<<<<<<< Updated upstream
     "Apuntes/FOD/Clase 1",
+=======
+>>>>>>> Stashed changes
     "Welcome.md"
   ]
 }

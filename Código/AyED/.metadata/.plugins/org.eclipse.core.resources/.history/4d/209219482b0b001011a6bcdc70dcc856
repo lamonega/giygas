@@ -1,9 +1,0 @@
-package tp1.ej7;
-
-import java.util.List;
-
-public class Collatz {
-	public static List<Integer> SucesionCollatz (Integer n) {
-			
-	}
-}
