@@ -1,4 +1,3 @@
-// filepath: /home/laureano/giygas/Código/Rust/sdl/src/tp02/ej5.rs
 pub fn copiar_arreglo(entrada: &[f32]) -> Vec<f32> {
     entrada.to_vec()
 }
