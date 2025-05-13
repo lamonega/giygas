@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apuntes/Rust/Clase 1.md",
+                "file": "Apuntes/Rust/Clase 2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Clase 1"
+              "title": "Clase 2"
             }
           }
         ]
@@ -95,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Apuntes/Rust/Clase 1.md",
+                "file": "Apuntes/Rust/Clase 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Clase 1"
+              "title": "Backlinks for Clase 2"
             }
           },
           {
@@ -114,12 +114,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Apuntes/Rust/Clase 1.md",
+                "file": "Apuntes/Rust/Clase 2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Clase 1"
+              "title": "Outgoing links from Clase 2"
             }
           },
           {
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Apuntes/Rust/Clase 1.md",
+                "file": "Apuntes/Rust/Clase 2.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Clase 1"
+              "title": "Outline of Clase 2"
             }
           }
         ]
@@ -171,20 +171,19 @@
   },
   "active": "6f58f1e27ffc016c",
   "lastOpenFiles": [
-    "Código/Rust/sdl/src/tp02/mod.rs",
-    "Código/Rust/sdl/src/tp02/soluciones/ej7.rs",
-    "Código/Rust/sdl/src/tp02/soluciones/ej6.rs",
-    "Código/Rust/sdl/src/tp02/soluciones/ej5.rs",
-    "Código/Rust/sdl/src/tp02/soluciones/ej4.rs",
-    "Código/Rust/sdl/src/tp02/soluciones/ej3.rs",
-    "Código/Rust/sdl/src/tp02/soluciones/ej2.rs",
-    "Código/Rust/sdl/src/tp02/soluciones/ej1.rs",
-    "Código/Rust/sdl/src/tp02/soluciones",
-    "Código/Rust/sdl/src/tp01/mod.rs",
-    "Código/Rust/sdl/src/tp01/soluciones/ej12.rs",
+    "Apuntes/Rust/Clase 1.md",
+    "Código/Rust/sdl/src/tp02/ej7.rs",
+    "Código/Rust/sdl/src/tp02/ej6.rs",
+    "Código/Rust/sdl/src/tp02/ej5.rs",
+    "Código/Rust/sdl/src/tp02/ej4.rs",
+    "Código/Rust/sdl/src/tp02/ej3.rs",
+    "Código/Rust/sdl/src/tp02/ej2.rs",
+    "Código/Rust/sdl/src/tp02/ej1.rs",
+    "Código/Rust/sdl/src/tp01/ej12.rs",
+    "Código/Rust/sdl/src/tp01/ej11.rs",
+    "Código/Rust/sdl/src/tp01/ej10.rs",
     "Apuntes/Rust/Clase 2.md",
     "Apuntes/FOD/clase 2.md",
-    "Apuntes/FOD/Clase 1.md",
-    "Apuntes/Rust/Clase 1.md"
+    "Apuntes/FOD/Clase 1.md"
   ]
 }

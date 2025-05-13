@@ -205,16 +205,6 @@ Rust lo detecta en tiempo de compilación.
 ### ¿Qué es unit testing?
 
 Pruebas automáticas que verifican que una función haga lo que debe.
-
-### Ventajas
-
-- Detecta errores temprano
-    
-- Facilita refactorización
-    
-- Documentación viva del código
-    
-
 ### Sintaxis en Rust
 
 ```rust
@@ -225,11 +215,8 @@ fn prueba_suma() {
 ```
 
 Otros macros útiles:
-
 - `assert!(condición)`
-    
 - `assert_ne!(a, b)`
-    
 
 ### Ignorar test o esperar errores
 
