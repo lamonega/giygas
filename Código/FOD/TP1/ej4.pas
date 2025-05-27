@@ -11,6 +11,12 @@ type
     ArchivoEmpleados = file of TEmpleado;
 
 // Procedimientos y funciones
+
+procedure imprimirEmpleado(e: empleado);
+begin
+    writeln('Numero=', e.numero, ' Apellido=', e.apellido, ' Nombre=', e.nombre, ' Edad=', e.edad, ' DNI=', e.dni);
+end;
+
 procedure leerEmpleado(var e: TEmpleado);
 begin
     write('Apellido ("fin" para terminar): ');
@@ -47,46 +53,40 @@ begin
     writeln('Archivo creado exitosamente!');
 end;
 
-procedure listarPorDato(var a: ArchivoEmpleados);
-var
-    e: TEmpleado;
-    dato: string;
-    op: integer;
+function cumple(n, a, t: string): boolean;
 begin
-    Reset(a);
-    writeln('Buscar por:');
-    writeln('1. Apellido');
-    writeln('2. Nombre');
-    write('Opción: ');
-    readln(op);
-    write('Ingrese valor a buscar: ');
-    readln(dato);
-    
-    while not EOF(a) do begin
-        Read(a, e);
-        if ((op = 1) and (e.apellido = dato)) or 
-           ((op = 2) and (e.nombre = dato)) then
+    cumple:= ((n = t) or (a = t));
+end;
+procedure empleadoApellONombre(var a: ArchivoEmpleados);
+var
+    s: string[20];
+    e: TEmpleado;
+begin
+    reset(a);
+    writeln('Ingrese un nombre o un apellido de un empleado');
+    readln(s);
+    writeln('Empleados que tienen un nombre o apellido iguales a ', s, ': ');
+    while(not EOF(a)) do
         begin
-            writeln('Encontrado: ', e.apellido, ', ', e.nombre, 
-                    ' | Nro: ', e.numero, ' | Edad: ', e.edad);
+            read(a, e);
+            if(cumple(e.nombre, e.apellido, s)) then
+                imprimirEmpleado(e);
         end;
-    end;
-    Close(a);
+    close(a);
 end;
 
-procedure listarTodos(var a: ArchivoEmpleados);
+procedure imprimirArchivo(var a: ArchivoEmpleados);
 var
     e: TEmpleado;
 begin
-    Reset(a);
-    while not EOF(a) do begin
-        Read(a, e);
-        writeln(e.apellido, ', ', e.nombre, 
-               ' | Nro: ', e.numero, 
-               ' | Edad: ', e.edad, 
-               ' | DNI: ', e.dni);
-    end;
-    Close(a);
+    reset(a);
+    write('Archivo completo: ');
+    while(not EOF(arc)) do
+        begin
+            read(a, e);
+            imprimirEmpleado(e);
+        end;
+    close(a);
 end;
 
 procedure listarJubilados(var a: ArchivoEmpleados);
@@ -104,6 +104,23 @@ begin
     Close(a);
 end;
 
+procedure añadirAlFinal(var a: ArchivoEmpleados);
+var
+    e: TEmpleado;
+begin
+    Reset(a);
+end;
+
+procedure exportarTodo();
+begin
+
+end;
+
+procedure exportarEmpleadosSinDNI();
+begin
+
+end;
+
 procedure abrirArchivo(var a: ArchivoEmpleados);
 var
     op: integer;
@@ -118,7 +135,11 @@ begin
         writeln('1. Buscar por nombre/apellido');
         writeln('2. Listar todos');
         writeln('3. Listar próximos a jubilarse');
-        writeln('4. Volver al menu principal');
+        writeln('4. Añadir empleado/s al final');
+        writeln('5. Modificar la edad de un empleado');
+        writeln('6. Exportar lista de empleados a .txt');
+        writeln('7. Exportar lista de empleados sin DNI a .txt');
+        writeln('8. Volver al menu principal');
         write('Opción: ');
         readln(op);
         
@@ -127,7 +148,7 @@ begin
             2: listarTodos(a);
             3: listarJubilados(a);
         end;
-    until op = 4;
+    until op = 8;
 end;
 
 // Programa principal
