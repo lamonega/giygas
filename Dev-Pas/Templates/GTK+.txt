@@ -1,6 +1,0 @@
-program GtkProject;
-uses windows, gtk, glib;
-
-begin
-
-end.
