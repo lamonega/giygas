@@ -1,172 +1,268 @@
-program ejercicio3;
+program ejercicio4;
+
 type
-    TEmpleado = record
+    Empleado = record
         numero: integer;
+        apellido: string[20];
+        nombre: string[15];
         edad: integer;
-        dni: string[10];
-        apellido: string[50];
-        nombre: string[50];
+        dni: integer;
     end;
 
-    ArchivoEmpleados = file of TEmpleado;
+    ArchivoEmpleados = file of Empleado;
 
-// Procedimientos y funciones
-
-procedure imprimirEmpleado(e: empleado);
+{------------------------ UTILIDADES ------------------------}
+procedure ImprimirEmpleado(emp: Empleado);
 begin
-    writeln('Numero=', e.numero, ' Apellido=', e.apellido, ' Nombre=', e.nombre, ' Edad=', e.edad, ' DNI=', e.dni);
+    writeln('Numero=', emp.numero, ' Apellido=', emp.apellido, ' Nombre=', emp.nombre, ' Edad=', emp.edad, ' DNI=', emp.dni);
 end;
 
-procedure leerEmpleado(var e: TEmpleado);
+procedure LeerEmpleado(var emp: Empleado);
 begin
-    write('Apellido ("fin" para terminar): ');
-    readln(e.apellido);
-    if e.apellido <> 'fin' then begin
-        write('Nombre: ');
-        readln(e.nombre);
-        write('Número: ');
-        readln(e.numero);
-        write('Edad: ');
-        readln(e.edad);
-        write('DNI (00 si no tiene): ');
-        readln(e.dni);
+    writeln('Ingrese el apellido del empleado o "fin" para finalizar:');
+    readln(emp.apellido);
+    if emp.apellido <> 'fin' then
+    begin
+        writeln('Ingrese el nombre del empleado:');
+        readln(emp.nombre);
+        writeln('Ingrese el numero del empleado:');
+        readln(emp.numero);
+        writeln('Ingrese la edad del empleado:');
+        readln(emp.edad);
+        writeln('Ingrese el DNI del empleado:');
+        readln(emp.dni);
     end;
 end;
 
-procedure crearArchivo(var a: ArchivoEmpleados);
+{------------------------ CARGA INICIAL ------------------------}
+procedure CargarEmpleados(var archivo: ArchivoEmpleados);
 var
-    empleado: TEmpleado;
-    nombreFisico: string;
+    emp: Empleado;
 begin
-    write('Ingrese nombre del archivo: ');
-    readln(nombreFisico);
-    Assign(a, nombreFisico);
-    Rewrite(a);  // Crear nuevo archivo
-    
-    leerEmpleado(empleado);
-    while empleado.apellido <> 'fin' do begin
-        Write(a, empleado);
-        leerEmpleado(empleado);
+    LeerEmpleado(emp);
+    while emp.apellido <> 'fin' do
+    begin
+        write(archivo, emp);
+        LeerEmpleado(emp);
     end;
-    
-    Close(a);
-    writeln('Archivo creado exitosamente!');
+    close(archivo);
 end;
 
-function cumple(n, a, t: string): boolean;
+{------------------------ CONSULTA POR NOMBRE/APELLIDO ------------------------}
+function CoincideNombreApellido(nombre, apellido, texto: string): boolean;
 begin
-    cumple:= ((n = t) or (a = t));
+    CoincideNombreApellido := (nombre = texto) or (apellido = texto);
 end;
-procedure empleadoApellONombre(var a: ArchivoEmpleados);
+
+procedure BuscarPorNombreApellido(var archivo: ArchivoEmpleados);
 var
-    s: string[20];
-    e: TEmpleado;
+    texto: string[20];
+    emp: Empleado;
 begin
-    reset(a);
-    writeln('Ingrese un nombre o un apellido de un empleado');
-    readln(s);
-    writeln('Empleados que tienen un nombre o apellido iguales a ', s, ': ');
-    while(not EOF(a)) do
+    reset(archivo);
+    writeln('Ingrese un nombre o apellido a buscar:');
+    readln(texto);
+    writeln('Empleados encontrados:');
+    while not eof(archivo) do
+    begin
+        read(archivo, emp);
+        if CoincideNombreApellido(emp.nombre, emp.apellido, texto) then
+            ImprimirEmpleado(emp);
+    end;
+    close(archivo);
+end;
+
+{------------------------ IMPRESIONES ------------------------}
+procedure ImprimirArchivoCompleto(var archivo: ArchivoEmpleados);
+var
+    emp: Empleado;
+begin
+    reset(archivo);
+    writeln('Archivo completo:');
+    while not eof(archivo) do
+    begin
+        read(archivo, emp);
+        ImprimirEmpleado(emp);
+    end;
+    close(archivo);
+end;
+
+procedure ListarEmpleadosJubilacion(var archivo: ArchivoEmpleados);
+var
+    emp: Empleado;
+begin
+    reset(archivo);
+    writeln('Empleados mayores de 70 años:');
+    while not eof(archivo) do
+    begin
+        read(archivo, emp);
+        if emp.edad > 70 then
+            ImprimirEmpleado(emp);
+    end;
+    close(archivo);
+end;
+
+{------------------------ INCISO A ------------------------}
+function EsNumeroUnico(var archivo: ArchivoEmpleados; numero: integer): boolean;
+var
+    emp: Empleado;
+    encontrado: boolean;
+begin
+    encontrado := false;
+    seek(archivo, 0); // Reinicio posición de lectura
+    while not eof(archivo) and not encontrado do
+    begin
+        read(archivo, emp);
+        if emp.numero = numero then
+            encontrado := true;
+    end;
+    EsNumeroUnico := not encontrado;
+end;
+
+procedure AñadirEmpleadosAlFinal(var archivo: ArchivoEmpleados);
+var
+    emp: Empleado;
+begin
+    reset(archivo);
+    LeerEmpleado(emp);
+    while emp.apellido <> 'fin' do
+    begin
+        if EsNumeroUnico(archivo, emp.numero) then
         begin
-            read(a, e);
-            if(cumple(e.nombre, e.apellido, s)) then
-                imprimirEmpleado(e);
-        end;
-    close(a);
+            seek(archivo, filesize(archivo));
+            write(archivo, emp);
+        end
+        else
+            writeln('Empleado con numero ', emp.numero, ' ya existe. No se agrega.');
+        LeerEmpleado(emp);
+    end;
+    close(archivo);
 end;
 
-procedure imprimirArchivo(var a: ArchivoEmpleados);
+{------------------------ INCISO B ------------------------}
+procedure ModificarEdadEmpleado(var archivo: ArchivoEmpleados);
 var
-    e: TEmpleado;
+    numeroEmpleado, nuevaEdad: integer;
+    emp: Empleado;
+    encontrado: boolean;
 begin
-    reset(a);
-    write('Archivo completo: ');
-    while(not EOF(arc)) do
+    reset(archivo);
+    writeln('Ingrese el numero del empleado cuya edad desea modificar:');
+    readln(numeroEmpleado);
+    writeln('Ingrese la nueva edad:');
+    readln(nuevaEdad);
+    encontrado := false;
+
+    while not eof(archivo) and not encontrado do
+    begin
+        read(archivo, emp);
+        if emp.numero = numeroEmpleado then
         begin
-            read(a, e);
-            imprimirEmpleado(e);
-        end;
-    close(a);
-end;
-
-procedure listarJubilados(var a: ArchivoEmpleados);
-var
-    e: TEmpleado;
-begin
-    Reset(a);
-    while not EOF(a) do begin
-        Read(a, e);
-        if e.edad > 70 then begin
-            writeln('[Jubilación] ', e.apellido, ', ', e.nombre, 
-                    ' | Edad: ', e.edad);
+            emp.edad := nuevaEdad;
+            seek(archivo, filepos(archivo) - 1);
+            write(archivo, emp);
+            encontrado := true;
         end;
     end;
-    Close(a);
-end;
 
-procedure añadirAlFinal(var a: ArchivoEmpleados);
-var
-    e: TEmpleado;
-begin
-    Reset(a);
-end;
-
-procedure exportarTodo();
-begin
-
-end;
-
-procedure exportarEmpleadosSinDNI();
-begin
-
-end;
-
-procedure abrirArchivo(var a: ArchivoEmpleados);
-var
-    op: integer;
-    nombreFisico: string;
-begin
-    write('Ingrese nombre del archivo: ');
-    readln(nombreFisico);
-    Assign(a, nombreFisico);
-    
-    repeat
-        writeln('--- MENU ARCHIVO ---');
-        writeln('1. Buscar por nombre/apellido');
-        writeln('2. Listar todos');
-        writeln('3. Listar próximos a jubilarse');
-        writeln('4. Añadir empleado/s al final');
-        writeln('5. Modificar la edad de un empleado');
-        writeln('6. Exportar lista de empleados a .txt');
-        writeln('7. Exportar lista de empleados sin DNI a .txt');
-        writeln('8. Volver al menu principal');
-        write('Opción: ');
-        readln(op);
+    if encontrado then
+        writeln('Edad modificada exitosamente.')
+    else
+        writeln('Empleado no encontrado.');
         
-        case op of
-            1: listarPorDato(a);
-            2: listarTodos(a);
-            3: listarJubilados(a);
-        end;
-    until op = 8;
+    close(archivo);
 end;
 
-// Programa principal
+{------------------------ INCISO C ------------------------}
+procedure ExportarArchivoCompleto(var archivo: ArchivoEmpleados);
 var
-    archivo: ArchivoEmpleados;
+    archivoTxt: text;
+    emp: Empleado;
+begin
+    assign(archivoTxt, 'todos_empleados.txt');
+    reset(archivo);
+    rewrite(archivoTxt);
+    while not eof(archivo) do
+    begin
+        read(archivo, emp);
+        with emp do
+            writeln(archivoTxt, numero, ' ', apellido, ' ', nombre, ' ', edad, ' ', dni);
+    end;
+    close(archivo);
+    close(archivoTxt);
+    writeln('Archivo exportado como "todos_empleados.txt".');
+end;
+
+{------------------------ INCISO D ------------------------}
+procedure ExportarEmpleadosSinDNI(var archivo: ArchivoEmpleados);
+var
+    archivoTxt: text;
+    emp: Empleado;
+begin
+    assign(archivoTxt, 'faltaDNIEmpleado.txt');
+    reset(archivo);
+    rewrite(archivoTxt);
+    while not eof(archivo) do
+    begin
+        read(archivo, emp);
+        if emp.dni = 0 then
+            with emp do
+                writeln(archivoTxt, numero, ' ', apellido, ' ', nombre, ' ', edad, ' ', dni);
+    end;
+    close(archivo);
+    close(archivoTxt);
+    writeln('Archivo exportado como "faltaDNIEmpleado.txt".');
+end;
+
+{------------------------ MENÚ ------------------------}
+procedure MostrarMenu();
+begin
+    writeln;
+    writeln('===== MENU DE OPCIONES =====');
+    writeln('1. Buscar empleado por nombre o apellido');
+    writeln('2. Mostrar todos los empleados');
+    writeln('3. Listar empleados mayores de 70 años');
+    writeln('4. Añadir nuevos empleados');
+    writeln('5. Modificar edad de un empleado');
+    writeln('6. Exportar empleados a "todos_empleados.txt"');
+    writeln('7. Exportar empleados sin DNI a "faltaDNIEmpleado.txt"');
+    writeln('8. Salir');
+    writeln('Seleccione una opción:');
+end;
+
+procedure MenuOpciones(var archivo: ArchivoEmpleados);
+var
     opcion: integer;
 begin
-    repeat
-        writeln('----- MENU PRINCIPAL -----');
-        writeln('1. Crear nuevo archivo');
-        writeln('2. Abrir archivo existente');
-        writeln('3. Salir');
-        write('Seleccione opción: ');
-        readln(opcion);
-        
+    MostrarMenu;
+    readln(opcion);
+    while opcion <> 8 do
+    begin
         case opcion of
-            1: crearArchivo(archivo);
-            2: abrirArchivo(archivo);
+            1: BuscarPorNombreApellido(archivo);
+            2: ImprimirArchivoCompleto(archivo);
+            3: ListarEmpleadosJubilacion(archivo);
+            4: AñadirEmpleadosAlFinal(archivo);
+            5: ModificarEdadEmpleado(archivo);
+            6: ExportarArchivoCompleto(archivo);
+            7: ExportarEmpleadosSinDNI(archivo);
+        else
+            writeln('Opción inválida.');
         end;
-    until opcion = 3;
+        MostrarMenu;
+        readln(opcion);
+    end;
+end;
+
+{------------------------ PROGRAMA PRINCIPAL ------------------------}
+var
+    archivo: ArchivoEmpleados;
+    nombreArchivo: string[15];
+begin
+    writeln('Ingrese el nombre del archivo:');
+    readln(nombreArchivo);
+    assign(archivo, nombreArchivo);
+    rewrite(archivo);
+    CargarEmpleados(archivo);
+    MenuOpciones(archivo);
 end.

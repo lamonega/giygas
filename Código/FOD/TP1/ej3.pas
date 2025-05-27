@@ -1,151 +1,147 @@
+{3. Realizar un programa que presente un menú con opciones para:
+a. Crear un archivo de registros no ordenados de empleados y completarlo con
+datos ingresados desde teclado. De cada empleado se registra: número de
+empleado, apellido, nombre, edad y DNI. Algunos empleados se ingresan con
+DNI 00. La carga finaliza cuando se ingresa el String ‘fin’ como apellido.
+b. Abrir el archivo anteriormente generado y
+i. Listar en pantalla los datos de empleados que tengan un nombre o apellido
+determinado, el cual se proporciona desde el teclado.
+ii. Listar en pantalla los empleados de a uno por línea.
+iii. Listar en pantalla los empleados mayores de 70 años, próximos a jubilarse.
+NOTA: El nombre del archivo a crear o utilizar debe ser proporcionado por el usuario.}
+
 program ejercicio3;
 type
-    TEmpleado = record
+    empleado = record
         numero: integer;
+        apellido: string[20];
+        nombre: string[15];
         edad: integer;
-        dni: string[10];
-        apellido: string[50];
-        nombre: string[50];
+        dni: integer;
     end;
-
-    ArchivoEmpleados = file of TEmpleado;
-
-// Procedimientos y funciones
-procedure leerEmpleado(var e: TEmpleado);
+    archivo = file of empleado;
+//-----------------------IMPRIMIR EMPLEADO-----------------------
+procedure imprimirEmpleado(e: empleado);
 begin
-    write('Apellido ("fin" para terminar): ');
+    writeln('Numero=', e.numero, ' Apellido=', e.apellido, ' Nombre=', e.nombre, ' Edad=', e.edad, ' DNI=', e.dni);
+end;
+//-----------------------A-----------------------
+procedure leerEmpleado(var e: empleado);
+begin
+    writeln('Ingrese el apellido del empleado');
     readln(e.apellido);
-    if e.apellido <> 'fin' then begin
-        write('Nombre: ');
-        readln(e.nombre);
-        write('Número: ');
-        readln(e.numero);
-        write('Edad: ');
-        readln(e.edad);
-        write('DNI (00 si no tiene): ');
-        readln(e.dni);
-    end;
-end;
-
-procedure crearArchivo(var a: ArchivoEmpleados);
-var
-    empleado: TEmpleado;
-    nombreFisico: string;
-begin
-    write('Ingrese nombre del archivo: ');
-    readln(nombreFisico);
-    Assign(a, nombreFisico);
-    Rewrite(a);  // Crear nuevo archivo
-    
-    leerEmpleado(empleado);
-    while empleado.apellido <> 'fin' do begin
-        Write(a, empleado);
-        leerEmpleado(empleado);
-    end;
-    
-    Close(a);
-    writeln('Archivo creado exitosamente!');
-end;
-
-procedure listarPorDato(var a: ArchivoEmpleados);
-var
-    e: TEmpleado;
-    dato: string;
-    op: integer;
-begin
-    Reset(a);
-    writeln('Buscar por:');
-    writeln('1. Apellido');
-    writeln('2. Nombre');
-    write('Opción: ');
-    readln(op);
-    write('Ingrese valor a buscar: ');
-    readln(dato);
-    
-    while not EOF(a) do begin
-        Read(a, e);
-        if ((op = 1) and (e.apellido = dato)) or 
-           ((op = 2) and (e.nombre = dato)) then
+    if(e.apellido <> 'fin') then
         begin
-            writeln('Encontrado: ', e.apellido, ', ', e.nombre, 
-                    ' | Nro: ', e.numero, ' | Edad: ', e.edad);
+            writeln('Ingrese el nombre del empleado');
+            readln(e.nombre);
+            writeln('Ingrese el numero del empleado');
+            readln(e.numero);
+            writeln('Ingrese la edad del empleado');
+            readln(e.edad);
+            writeln('Ingrese el DNI del empleado');
+            readln(e.dni);
         end;
-    end;
-    Close(a);
 end;
-
-procedure listarTodos(var a: ArchivoEmpleados);
+procedure cargarEmpleados(var arc: archivo);
 var
-    e: TEmpleado;
+    e: empleado;
 begin
-    Reset(a);
-    while not EOF(a) do begin
-        Read(a, e);
-        writeln(e.apellido, ', ', e.nombre, 
-               ' | Nro: ', e.numero, 
-               ' | Edad: ', e.edad, 
-               ' | DNI: ', e.dni);
-    end;
-    Close(a);
-end;
-
-procedure listarJubilados(var a: ArchivoEmpleados);
-var
-    e: TEmpleado;
-begin
-    Reset(a);
-    while not EOF(a) do begin
-        Read(a, e);
-        if e.edad > 70 then begin
-            writeln('[Jubilación] ', e.apellido, ', ', e.nombre, 
-                    ' | Edad: ', e.edad);
+    leerEmpleado(e);
+    while(e.apellido <> 'fin') do
+        begin
+            write(arc, e);
+            leerEmpleado(e);
         end;
-    end;
-    Close(a);
+    close(arc);
 end;
-
-procedure abrirArchivo(var a: ArchivoEmpleados);
-var
-    op: integer;
-    nombreFisico: string;
+//-----------------------B I-----------------------
+function cumple(nombre, apellido, texto: string): boolean;
 begin
-    write('Ingrese nombre del archivo: ');
-    readln(nombreFisico);
-    Assign(a, nombreFisico);
-    
-    repeat
-        writeln('--- MENU ARCHIVO ---');
-        writeln('1. Buscar por nombre/apellido');
-        writeln('2. Listar todos');
-        writeln('3. Listar próximos a jubilarse');
-        writeln('4. Volver al menu principal');
-        write('Opción: ');
-        readln(op);
-        
-        case op of
-            1: listarPorDato(a);
-            2: listarTodos(a);
-            3: listarJubilados(a);
-        end;
-    until op = 4;
+    cumple:= ((nombre = texto) or (apellido = texto));
 end;
-
-// Programa principal
+procedure empleadoApellONombre(var arc: archivo);
 var
-    archivo: ArchivoEmpleados;
+    texto: string[20];
+    e: empleado;
+begin
+    reset(arc);
+    writeln('Ingrese un nombre o un apellido de un empleado');
+    readln(texto);
+    writeln('Empleados que tienen un nombre o apellido iguales a ', texto, ': ');
+    while(not EOF(arc)) do
+        begin
+            read(arc, e);
+            if(cumple(e.nombre, e.apellido, texto)) then
+                imprimirEmpleado(e);
+        end;
+    close(arc);
+end;
+//-----------------------B II-----------------------
+procedure imprimirArchivo(var arc: archivo);
+var
+    e: empleado;
+begin
+    reset(arc);
+    write('Archivo completo: ');
+    while(not EOF(arc)) do
+        begin
+            read(arc, e);
+            imprimirEmpleado(e);
+        end;
+    close(arc);
+end;
+//-----------------------B III-----------------------
+procedure empleadosMayores70(var arc: archivo);
+var
+    e: empleado;
+begin
+    reset(arc);
+    writeln('Lista de empleados mayores a 70 de anios, prontos a jubilarse: ');
+    while(not EOF(arc)) do
+        begin
+            read(arc, e);
+            if(e.edad > 70) then
+                imprimirEmpleado(e);
+        end;
+    close(arc);
+end;
+//-----------------------MENU DE OPCIONES-----------------------
+procedure menuOpciones(var arc: archivo);
+var
     opcion: integer;
 begin
-    repeat
-        writeln('----- MENU PRINCIPAL -----');
-        writeln('1. Crear nuevo archivo');
-        writeln('2. Abrir archivo existente');
-        writeln('3. Salir');
-        write('Seleccione opción: ');
-        readln(opcion);
-        
-        case opcion of
-            1: crearArchivo(archivo);
-            2: abrirArchivo(archivo);
+    writeln('MENU DE OPCIONES');
+    writeln('Opcion 1: Listar en pantalla los datos de empleados que tengan un nombre o apellido determinado');
+    writeln('Opcion 2: Listar en pantalla los empleados de a uno por linea');
+    writeln('Opcion 3: Listar en pantalla los empleados mayores a 70 anios, proximos a jubilarse');
+    writeln('Opcion 4: Salir del menu y terminar la ejecucion del programa');
+    readln(opcion);
+    while(opcion <> 4) do
+        begin
+            case opcion of
+                1: empleadoApellONombre(arc);
+                2: imprimirArchivo(arc);
+                3: empleadosMayores70(arc);
+            else
+                writeln('La opcion ingresada no corresponde a ninguna de las mostradas en el menu de opciones');
+            end;
+            writeln();
+            writeln('MENU DE OPCIONES');
+            writeln('Opcion 1: Listar en pantalla los datos de empleados que tengan un nombre o apellido determinado');
+            writeln('Opcion 2: Listar en pantalla los empleados de a uno por linea');
+            writeln('Opcion 3: Listar en pantalla los empleados mayores a 70 anios, proximos a jubilarse');
+            writeln('Opcion 4: Salir del menu y terminar la ejecucion del programa');
+            readln(opcion);
         end;
-    until opcion = 3;
+end;
+var
+    arc: archivo;
+    nombre: string[15];
+begin
+    writeln('Ingrese un nombre del archivo');
+    readln(nombre);
+    assign(arc, nombre);
+    rewrite(arc);
+    cargarEmpleados(arc);
+    menuOpciones(arc);
 end.
