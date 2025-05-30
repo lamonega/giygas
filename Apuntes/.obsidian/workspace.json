@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "7538e5719b35fc3b",
+        "id": "980b7f43e35963bb",
         "type": "tabs",
         "children": [
           {
-            "id": "2ca0a865cfc16057",
+            "id": "de1baef774b21382",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
+                "file": "AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3.2 Árboles de expresión"
+              "title": "3.1 Árboles binarios"
             }
           }
         ]
@@ -168,10 +168,25 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "2ca0a865cfc16057",
+  "active": "de1baef774b21382",
   "lastOpenFiles": [
+    "AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
+    "FOD/Teoría/Exp. prácticas/4 - CorteControl.md",
+    "FOD/Teoría/Exp. prácticas/3 - MaestroDetalle.md",
+    "FOD/Teoría/Exp. prácticas/2 - Archivos binarios y de texto.md",
+    "FOD/Teoría/Exp. prácticas/1 - Archivos.md",
+    "FOD/Teoría/Exp. prácticas/7 - BTree.md",
+    "FOD/Teoría/Exp. prácticas/8 - B+Tree.md",
+    "FOD/Teoría/Exp. prácticas/9 - Hashing.md",
+    "FOD/Teoría/Exp. prácticas/6 - Bajas.md",
+    "FOD/Teoría/Exp. prácticas/5 - Merge.md",
+    "Sin nombre",
+    "FOD/Teoría/Exp. teóricas/Clase 3.md",
+    "FOD/Teoría/Exp. teóricas/Clase 2.md",
+    "FOD/Teoría/Exp. teóricas/Clase 1.md",
+    "FOD/Teoría/Exp. prácticas",
+    "FOD/Teoría/Exp. teóricas",
     "AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
-    "AyED/Teoría/Clase 2/2.1 Herencia y abstracción.md",
-    "FOD/Teoría/Clase 1.md"
+    "AyED/Teoría/Clase 2/2.1 Herencia y abstracción.md"
   ]
 }
