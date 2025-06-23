@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
+                "file": "AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3.1 Árboles binarios"
+              "title": "3.2 Árboles de expresión"
             }
           }
         ]
@@ -170,23 +170,33 @@
   },
   "active": "de1baef774b21382",
   "lastOpenFiles": [
-    "AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
-    "FOD/Teoría/Exp. prácticas/4 - CorteControl.md",
-    "FOD/Teoría/Exp. prácticas/3 - MaestroDetalle.md",
-    "FOD/Teoría/Exp. prácticas/2 - Archivos binarios y de texto.md",
-    "FOD/Teoría/Exp. prácticas/1 - Archivos.md",
+    "AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
+    "Rust/Teoría/Clase 6.md",
+    "Rust/Teoría/Clase 7.md",
+    "Rust/Teoría/Clase 9.md",
+    "Rust/Teoría/General.md",
+    "Rust/Teoría/Clase 8.md",
+    "Rust/Teoría/Clase 5.md",
+    "Rust/Teoría/Clase 4.md",
     "FOD/Teoría/Exp. prácticas/7 - BTree.md",
-    "FOD/Teoría/Exp. prácticas/8 - B+Tree.md",
-    "FOD/Teoría/Exp. prácticas/9 - Hashing.md",
     "FOD/Teoría/Exp. prácticas/6 - Bajas.md",
     "FOD/Teoría/Exp. prácticas/5 - Merge.md",
+    "FOD/Teoría/Exp. prácticas/2 - ArchivosBinTxt.md",
+    "FOD/Teoría/Exp. prácticas/1 - Archivos.md",
+    "FOD/Teoría/Exp. prácticas/3 - MaestroDetalle.md",
+    "FOD/Teoría/Exp. prácticas/4 - CorteControl.md",
+    "FOD/Teoría/Exp. prácticas/9 - Hashing.md",
+    "FOD/Teoría/Exp. prácticas/8 - B+Tree.md",
+    "Rust/Teoría/Clase 3.md",
+    "Rust/Teoría/Clase 2.md",
+    "Rust/Teoría/Clase 1.md",
+    "AyED/Teoría/Clase 3/3.2 Árboles de expresión.md",
     "Sin nombre",
     "FOD/Teoría/Exp. teóricas/Clase 3.md",
     "FOD/Teoría/Exp. teóricas/Clase 2.md",
     "FOD/Teoría/Exp. teóricas/Clase 1.md",
     "FOD/Teoría/Exp. prácticas",
     "FOD/Teoría/Exp. teóricas",
-    "AyED/Teoría/Clase 3/3.1 Árboles binarios.md",
     "AyED/Teoría/Clase 2/2.1 Herencia y abstracción.md"
   ]
 }
