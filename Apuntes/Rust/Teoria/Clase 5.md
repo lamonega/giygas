@@ -1,19 +1,14 @@
-## **Traits**
+d## **Traits**
 
 ### ¿Qué es un Trait?
-
 Un **trait** define un comportamiento que puede ser compartido entre tipos. Es similar a una interfaz en otros lenguajes.  
 Se puede usar para:
 
 - Declarar funciones abstractas.
-    
 - Proveer implementaciones por defecto.
-    
 - Restringir tipos genéricos.
-    
 
 ### Ejemplo básico
-
 ```rust
 pub trait Multiplica {
     fn mul(&self, otro: i32) -> f64;
@@ -33,9 +28,7 @@ fn main() {
     println!("{}", num.mul(3));
 }
 ```
-
 ### Trait como interfaz común
-
 ```rust
 trait Animal {
     fn hablar(&self) -> String;
@@ -55,9 +48,7 @@ impl Animal for Gato {
     }
 }
 ```
-
 ### Uso con genéricos
-
 ```rust
 fn imprimir_hablar<T: Animal>(animal: &T) {
     println!("{}", animal.hablar());
@@ -65,7 +56,6 @@ fn imprimir_hablar<T: Animal>(animal: &T) {
 ```
 
 ### Parámetros con múltiples traits
-
 ```rust
 fn imprimir_hablar<T>(animal: &T)
 where T: Animal + OtroTrait
@@ -75,19 +65,12 @@ where T: Animal + OtroTrait
 ```
 
 ---
-
 ## **Programación Orientada a Objetos (POO)**
-
 ### Elementos básicos
-
 - **Clases**: Representadas por structs.
-    
 - **Atributos**: Campos de un struct.
-    
 - **Métodos**: Implementados con `impl`.
-    
 - **Objetos**: Instancias de structs.
-    
 
 ### Conceptos fundamentales
 
